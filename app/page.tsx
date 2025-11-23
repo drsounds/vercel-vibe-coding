@@ -9,6 +9,7 @@ import { Welcome } from '@/components/modals/welcome'
 import { cookies } from 'next/headers'
 import { getHorizontal, getVertical } from '@/components/layout/sizing'
 import { hideBanner } from '@/app/actions'
+import { AppLifecycleListener } from '@/components/app-lifecycle-listener'
 
 export default async function Page() {
   const store = await cookies()
@@ -18,6 +19,7 @@ export default async function Page() {
   return (
     <>
       <Welcome defaultOpen={banner} onDismissAction={hideBanner} />
+      <AppLifecycleListener />
       <div className="flex flex-col h-screen max-h-screen overflow-hidden p-2 space-x-2">
         <Header className="flex items-center w-full" />
         <ul className="flex space-x-5 font-mono text-sm tracking-tight px-1 py-2 md:hidden">
